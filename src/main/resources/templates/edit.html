@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+
+<head>
+<meta charset="UTF-8">
+<title> CST-339 Spring Boot Activity Application </title>
+</head>
+<body>
+
+<div layout:fragment="content">
+<form action ="#" th:action="@{/login/edit(id=${order.id})}" th:object="${order}" method="post">
+<table>
+	<tr>
+		<td> Order_NO: </td><td><input type="text" th:field="*{orderNo}" ></td>
+		
+		</tr>
+		<tr>
+			<td> Product_Name: </td><td><input type ="text" th:field="*{productName}" ></td>
+			</tr>
+			<tr>
+			
+			<td> Price: </td><td><input type="text" th:field="*{price}" ></td>
+		
+		</tr>
+		<tr>
+			<td> Quantity: </td><td><input type ="text" th:field="*{quantity}" ></td>
+			</tr>
+			<tr>
+			
+			
+			<td colspan="3"><input type="submit" value="Sumbit"/></td>
+			</tr>
+</table>
+		<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+		<div th:each="err : ${#fields.errors('*')}">
+			<span style="color:red" th:text="${err}" class="fieldError"></span>
+			
+			</div>
+			
+</form>
+</body>
+</html>
