@@ -34,7 +34,7 @@ public OrdersDataService(DataSource dataSource) {
 }
 	@Override
 	public List<OrderModel>findAll() {
-	String sql = "SELECT * FROM ORDERS";
+	String sql = "SELECT * FROM orders";
 	List<OrderModel> orders = new ArrayList<OrderModel>();
 	
 	try {
@@ -57,7 +57,7 @@ public OrdersDataService(DataSource dataSource) {
 
 	public boolean create(OrderModel order) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO orders(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES(?,?,?,?)";
 		
 		try {
 			int rows = jdbcTemplateObject.update(sql, order.getOrderNo(), order.getProductName(), order.getPrice(), order.getQuantity());
@@ -77,7 +77,7 @@ public OrdersDataService(DataSource dataSource) {
 	@Override
 	public int deleteByID(long id) {
 		// TODO Auto-generated method stub
-		return jdbcTemplateObject.update("DELETE FROM ORDERS WHERE id=?", id);
+		return jdbcTemplateObject.update("DELETE FROM orders WHERE id=?", id);
 	
 	}
 	@Override
@@ -90,7 +90,7 @@ public OrdersDataService(DataSource dataSource) {
 	public OrderModel findbyId1(long id) {
 		
 		try {
-		OrderModel order = jdbcTemplateObject.queryForObject("SELECT * FROM ORDERS WHERE id = ?", BeanPropertyRowMapper.newInstance(OrderModel.class), id);
+		OrderModel order = jdbcTemplateObject.queryForObject("SELECT * FROM orders WHERE id = ?", BeanPropertyRowMapper.newInstance(OrderModel.class), id);
 		return order;
 		}
 		catch (EmptyResultDataAccessException e) {
@@ -106,7 +106,7 @@ public OrdersDataService(DataSource dataSource) {
 	public boolean update(OrderModel order) {
 
 				//System.out.println(order.getId()  + "order passed in from update");
-				String sql = "UPDATE ORDERS SET ORDER_NO = ?, PRODUCT_NAME = ?, PRICE = ?, QUANTITY = ? WHERE id = ?";
+				String sql = "UPDATE orders SET ORDER_NO = ?, PRODUCT_NAME = ?, PRICE = ?, QUANTITY = ? WHERE id = ?";
 				
 				try {
 					int rows = jdbcTemplateObject.update(sql, order.getOrderNo(), order.getProductName(), order.getPrice(), order.getQuantity(), order.getId());

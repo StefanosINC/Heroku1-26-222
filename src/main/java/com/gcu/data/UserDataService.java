@@ -36,7 +36,7 @@ public class UserDataService implements DataAccessInterface<LoginModel> {
 
 	@Override
 	public boolean create(LoginModel t) {
-String sql = "INSERT INTO USERS(USERNAME, PASSWORD) VALUES(?,?)";
+String sql = "INSERT INTO users(USERNAME, PASSWORD) VALUES(?,?)";
 		
 		try {
 			int rows = jdbcTemplateObject.update(sql, t.getUsername(), t.getPassword());
@@ -50,7 +50,7 @@ String sql = "INSERT INTO USERS(USERNAME, PASSWORD) VALUES(?,?)";
 	}
 
 
-
+	
 	
 	@Override
 	public List<OrderModel> findById(long id) {
